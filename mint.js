@@ -2,7 +2,7 @@
 import { getKeypairFromFile } from "@solana-developers/helpers";
 import { ExtensionType, LENGTH_SIZE, TOKEN_2022_PROGRAM_ID, TYPE_SIZE, createInitializeMetadataPointerInstruction, createInitializeMintInstruction, getMintLen, getTokenMetadata } from "@solana/spl-token";
 import { createInitializeInstruction, createUpdateFieldInstruction, pack } from "@solana/spl-token-metadata";
-import { Connection, Keypair, SystemProgram, Transaction, clusterApiUrl, sendAndConfirmTransaction } from "@solana/web3.js";
+import { Connection, Keypair, PublicKey, SystemProgram, Transaction, clusterApiUrl, sendAndConfirmTransaction } from "@solana/web3.js";
 const connection = new Connection(clusterApiUrl('devnet'));
 const payer = await getKeypairFromFile("C:/Users/myasi/.config/solana/id.json");
 console.log("payer - " + payer.publicKey.toBase58());
@@ -51,6 +51,7 @@ const updateFieldIx = createUpdateFieldInstruction({
 const trxn = new Transaction().add(createAccountTx, initializeMetadataPointerIx, initializeMintIx, initializeMetadataIx, updateFieldIx);
 const sign = await sendAndConfirmTransaction(connection, trxn, [payer, mint]);
 console.log("sign : " + sign);
-const getMetadata = await getTokenMetadata(connection, mint.publicKey);
+const getMetadata = await getTokenMetadata(connection, new PublicKey('8et8szNKtvcUrcqepp855Cz7FznWRLdvMZAS96g8YHbt') //got mint key from solscan.io
+);
 console.log("Metadata : ");
 console.log(getMetadata);

@@ -3,7 +3,7 @@
 import { getKeypairFromFile } from "@solana-developers/helpers";
 import { ExtensionType, LENGTH_SIZE, TOKEN_2022_PROGRAM_ID, TYPE_SIZE, createInitializeMetadataPointerInstruction, createInitializeMintInstruction, getMintLen, getTokenMetadata } from "@solana/spl-token";
 import { TokenMetadata, createInitializeInstruction, createUpdateFieldInstruction, pack } from "@solana/spl-token-metadata";
-import { Connection, Keypair, SystemProgram, Transaction, clusterApiUrl, sendAndConfirmTransaction } from "@solana/web3.js";
+import { Connection, Keypair, PublicKey, SystemProgram, Transaction, clusterApiUrl, sendAndConfirmTransaction } from "@solana/web3.js";
 
 const connection = new Connection(clusterApiUrl('devnet'));
 
@@ -93,7 +93,7 @@ console.log("sign : " + sign);
 
 const getMetadata = await getTokenMetadata(
     connection,
-    mint.publicKey
+    new PublicKey('8et8szNKtvcUrcqepp855Cz7FznWRLdvMZAS96g8YHbt') //got mint key from solscan.io
 );
 
 console.log("Metadata : ");
