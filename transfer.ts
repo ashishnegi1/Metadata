@@ -1,4 +1,4 @@
-// THIS SCRIPT IS TO TRANSFER 10 COINS TO AN UNFUNDED ACCOUNT(USER WITH NO ASSOCIATED TOKEN ACCOUNT BUT HAS ENOUGH BALANCE).
+// THIS SCRIPT IS TO TRANSFER 1 COINS TO AN UNFUNDED ACCOUNT(USER WITH NO ASSOCIATED TOKEN ACCOUNT BUT HAS ENOUGH BALANCE).
 
 import { getKeypairFromFile } from "@solana-developers/helpers";
 import { TOKEN_2022_PROGRAM_ID, getOrCreateAssociatedTokenAccount, transfer } from "@solana/spl-token";
@@ -47,7 +47,7 @@ const signature = await transfer(
     fromTokenAccount.address,
     toTokenAccount.address,
     fromWallet.publicKey,
-    999990,
+    1000000,
     undefined,
     undefined,
     TOKEN_2022_PROGRAM_ID
